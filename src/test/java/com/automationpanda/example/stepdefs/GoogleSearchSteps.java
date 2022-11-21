@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +19,7 @@ public class GoogleSearchSteps {
 
     @Before(value = "@web", order = 1)
     public void initWebDriver() throws Throwable {
+        System.setProperty("webdriver.chrome.driver","/opt/chromedriver");
         driver = new ChromeDriver();
     }
 

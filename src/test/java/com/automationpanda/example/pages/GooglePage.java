@@ -21,6 +21,9 @@ public class GooglePage extends AbstractPandaPage {
     }
 
     public void enterSearchPhrase(String phrase) {
+        WebElement cookieButton = driverWait(10).until(ExpectedConditions.elementToBeClickable(By.xpath("//div[normalize-space()='Tout accepter']")));
+        cookieButton.click();
+        
         WebElement searchField = driverWait(10).until(ExpectedConditions.elementToBeClickable(BY_SEARCH_FIELD));
         searchField.sendKeys(phrase);
         searchField.submit();
@@ -28,7 +31,7 @@ public class GooglePage extends AbstractPandaPage {
 
     public boolean pageTitleContains(String phrase) {
         try {
-            return driverWait(5).until(ExpectedConditions.titleContains(phrase));
+            return driverWait(10).until(ExpectedConditions.titleContains(phrase));
         } catch (TimeoutException ex) {
             return false;
         }
